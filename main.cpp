@@ -4,10 +4,6 @@
 #include <vector>
 #include <string>
 
-struct Leaks {
-	~Leaks() { _CrtDumpMemoryLeaks(); }
-}_l;
-
 enum class Type {
 	Art, Tech
 };
@@ -38,45 +34,44 @@ public:
 		if (author.empty() || title.empty()) {
 
 			std::cout << "error" << std::endl;
-			return false;
 		}
 		else {
 			book.emplace_back(title, author, bookType);
 		}
 	}
 	void CountSwitch() {
-		int art = 0;
-		int tech = 0;
+		int ArtCount = 0;
+		int TechCount = 0;
 		for (Book i : book) {
 			switch (i.GetType())
 			{
 			case Type::Art:
-				++art;
+				++ArtCount;
 				break;
 			default:
-				++tech;
+				++TechCount;
 				break;
 			}
 		}
-		std::cout << "Art: " << art << std::endl;
-		std::cout << "Tech: " << tech << std::endl;
+		std::cout << "Art: " << ArtCount << std::endl;
+		std::cout << "Tech: " << TechCount << std::endl;
 	}
 	void CountFor() {
-		int art = 0;
-		int tech = 0;
+		int ArtCount = 0;
+		int TechCount = 0;
 		for (Book i : book)
 		{
 			if (i.GetType() == Type::Art)
 			{
-				++art;
+				++ArtCount;
 			}
 			else
 			{
-				++tech;
+				++TechCount;
 			}
 		}
-		std::cout << "Art: " << art << std::endl;
-		std::cout << "Tech: " << tech << std::endl;
+		std::cout << "Art: " << ArtCount << std::endl;
+		std::cout << "Tech: " << TechCount << std::endl;
 	}
 
 private:
